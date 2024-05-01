@@ -23,3 +23,22 @@ app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
 ```
+<h4>// Frontent scripts</h4>
+<h5>DataCard.jsx // frontend script</h5>
+
+```
+// components/DataCard.js
+import React from 'react';
+
+const DataCard = ({ data }) => {
+  return (
+    <div style={{ border: '1px solid #ccc', padding: '20px', margin: '20px', borderRadius: '5px' }}>
+      <h1>{data.name}</h1>
+      <p>Age: {data.age}</p>
+      <p>Purpose: {data.purpose}</p>
+    </div>
+  );
+};
+
+export default DataCard;
+```
