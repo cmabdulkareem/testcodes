@@ -48,15 +48,17 @@ export default DataCard;
 ```
 // App.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import DataCard from './components/DataCard';
 
 function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/') // Adjust if your endpoint differs
-      .then(response => response.json())
-      .then(data => setData(data))
+    axios.get('http://localhost:3000/')
+      .then(response => {
+        setData(response.data); // response.data instead of response.json()
+      })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
@@ -68,5 +70,6 @@ function App() {
 }
 
 export default App;
+
 
 ```
