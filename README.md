@@ -70,6 +70,55 @@ function App() {
 }
 
 export default App;
+```
 
+<h2>If array of objects passed</h2>
+
+```
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import DataCard from './components/DataCard';
+
+function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  return (
+    <div className="App">
+      {data.length > 0 ? (
+        data.map((item, index) => (
+          <DataCard key={index} data={item} />
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+
+```
+import React from 'react';
+
+const DataCard = ({ data }) => {
+  return (
+    <div style={{ border: '1px solid #ccc', padding: '20px', margin: '20px', borderRadius: '5px' }}>
+      <h1>{data.name}</h1>
+      <p>Age: {data.age}</p>
+      <p>Purpose: {data.purpose}</p>
+    </div>
+  );
+};
+
+export default DataCard;
 
 ```
