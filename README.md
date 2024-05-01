@@ -2,6 +2,7 @@
 
 <h3>Backened script</h3>
 
+```
 const express = require('express');
 const cors = require('cors'); // First, install CORS with npm install cors
 const app = express();
@@ -20,3 +21,4 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
+```
